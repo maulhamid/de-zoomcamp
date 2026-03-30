@@ -1,0 +1,19 @@
+tfl_cycle_analytics:
+  target: "{{ env_var('DBT_TARGET', 'local') }}"
+  outputs:
+    local:
+      type: duckdb
+      path: "{{ env_var('DUCKDB_PATH') }}"
+      schema: "{{ env_var('DBT_SCHEMA', 'analytics') }}"
+      threads: 4
+    gcp:
+      type: bigquery
+      method: service-account
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      dataset: "{{ env_var('BQ_DATASET', 'tfl_cycle_analytics') }}"
+      location: "{{ env_var('BQ_LOCATION', 'asia-southeast2') }}"
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+

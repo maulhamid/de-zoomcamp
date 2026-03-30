@@ -1,0 +1,5 @@
+Rental Id,Duration,Bike Id,End Date,EndStation Id,EndStation Name,Start Date,StartStation Id,StartStation Name
+1001,620,17234,01/01/2024 08:12,258,Embankment (Savoy),01/01/2024 08:02,14,Brunswick Square
+1002,1340,17555,01/01/2024 09:44,14,Brunswick Square,01/01/2024 09:22,258,Embankment (Savoy)
+1002,1340,17555,01/01/2024 09:44,14,Brunswick Square,01/01/2024 09:22,258,Embankment (Savoy)
+

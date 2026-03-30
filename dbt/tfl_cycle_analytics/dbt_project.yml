@@ -1,0 +1,19 @@
+name: tfl_cycle_analytics
+version: 1.0.0
+config-version: 2
+
+profile: tfl_cycle_analytics
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  tfl_cycle_analytics:
+    +schema: "{{ env_var('DBT_SCHEMA', 'analytics') }}"
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+

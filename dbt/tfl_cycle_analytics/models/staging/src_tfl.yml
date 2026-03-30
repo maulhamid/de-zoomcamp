@@ -1,0 +1,54 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: "{{ env_var('DBT_RAW_SCHEMA', 'raw') }}"
+    tables:
+      - name: journeys
+      - name: stations_latest
+
+models:
+  - name: stg_journeys
+    columns:
+      - name: trip_id
+        tests:
+          - not_null
+          - unique
+      - name: started_at
+        tests:
+          - not_null
+      - name: ended_at
+        tests:
+          - not_null
+      - name: duration_band
+        tests:
+          - accepted_values:
+              values: ["0-15 min", "15-30 min", "30-60 min", "60+ min", "unknown"]
+  - name: stg_stations
+    columns:
+      - name: station_id
+        tests:
+          - not_null
+  - name: dim_station
+    columns:
+      - name: station_id
+        tests:
+          - unique
+          - not_null
+  - name: fct_trips
+    columns:
+      - name: trip_id
+        tests:
+          - unique
+          - not_null
+      - name: start_station_id
+        tests:
+          - relationships:
+              to: ref('dim_station')
+              field: station_id
+      - name: end_station_id
+        tests:
+          - relationships:
+              to: ref('dim_station')
+              field: station_id
+

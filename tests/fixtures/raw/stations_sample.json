@@ -1,0 +1,17 @@
+[
+  {
+    "id": "BikePoints_14",
+    "commonName": "Brunswick Square",
+    "placeType": "BikePoint",
+    "lat": 51.523951,
+    "lon": -0.123075,
+    "additionalProperties": [
+      {"key": "TerminalName", "value": "0014"},
+      {"key": "NbBikes", "value": "7"},
+      {"key": "NbEmptyDocks", "value": "11"},
+      {"key": "NbDocks", "value": "18"},
+      {"key": "Modified", "value": "2024-01-01T09:00:00Z"}
+    ]
+  }
+]
+
